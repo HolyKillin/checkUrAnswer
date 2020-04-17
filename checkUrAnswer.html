@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>对答案</title>
+</head>
+<body>
+
+<script>
+    let strMy = `
+a b b b d c d c a c
+`;
+    let strRight=`
+1-5. BBDAD
+6-10. CDBAC
+`;
+
+    function checkStr(str){
+        return  str.replace(/[^a-zA-Z]+/gi,"").split("");
+    }
+    strMy = checkStr(strMy);
+    strRight = checkStr(strRight);
+    while (strMy.length !== strRight.length) {
+        strMy.push("留空")
+    }
+
+    let checkIt = strMy.map((c,i)=> c.toUpperCase() !== strRight[i] && i+1).filter(strMy=>strMy);
+    let rightNums = strRight.length-checkIt.length;
+    let rightRate = (rightNums/strRight.length * 100 ).toFixed(2) + "%";
+    //或者这样↓
+    // let rightRate = Math.round(rightNums/strRight.length * 10000 ) / 100.00 + "%"
+    let result = "你的答案："+strMy +"\n"+ "正确答案：" +strRight +"\n"+"错误题号："+checkIt +"\n"+"错误题数："+checkIt.length
+        +"\n"+"正确题数："+rightNums+"\n"+"正确率："+rightRate;
+    console.log(result);
+
+</script>
+</body>
+</html>
