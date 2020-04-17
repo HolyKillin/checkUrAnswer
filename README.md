@@ -3,8 +3,8 @@
 
 
      
-     1. <a id='1' href='https://holykillin.github.io/something/checkUrAnswer.html'>
-    checkUrAnswer  对选择题答案</a>
+<a id='1' href='https://holykillin.github.io/something/checkUrAnswer.html'>
+    1. checkUrAnswer  对选择题答案</a>
 
         - use:把你做好的题目答案和正确答案分别cv到代码里的strMy和strRight，F12看
 
