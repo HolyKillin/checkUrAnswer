@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>grid layout</title>
+
+    <style>
+        html,body{width: 100%;height: 100%;margin: 0;}
+		header{width: 100%;background-color: #159eda;position: fixed;top:0;left: 0;height: 60px;}
+		header div.toolbar{padding: 10px ;position: relative;}
+		header div.leftToolbar{}
+		header div.leftToolbar h3{color: #fff;margin: 8px;}
+		header ul.rightToolbar{
+			position: absolute;
+			top: 0;
+			right: 0;
+			margin: 0;
+			padding: 0;
+		}
+		header ul.rightToolbar li{
+			float: left;
+			list-style: none;
+			position: relative;
+			display: inline-block;
+			line-height: 60px;
+			padding: 0 10px;
+		}
+		header ul.rightToolbar li a{
+
+		}
+		header ul.rightToolbar li a cite{
+			font-style: normal;
+			color: #fff;
+		}
+		header ul.rightToolbar li a img{
+			width: 40px;
+			height: 40px;
+			vertical-align: middle;
+			margin-top: -3px;
+		}
+		main{
+			margin-top: 80px;
+		}
+		main .tiles,header div.toolbar{
+			width: 95%;
+			margin: 0 auto;
+		}
+		main .tiles {
+			display: grid;
+			grid-template-columns: repeat(6,15%);
+			grid-template-rows: repeat(3,100px);
+			grid-auto-flow: column dense;
+			gap: 2px;
+			grid-gap: 2px;
+			justify-content: center;
+		}
+		main .tile-box{
+			/*float: left;*/
+			/*margin: 2px;*/
+			/*width: 15%;*/
+			/*height:100px;*/
+
+			width: 100%;
+			line-height: 100px;
+			background-color: #00AAEE;
+			text-align: center;
+			color: #fff;
+			border-radius: 2px;
+		}
+		main .tile-box.tile-box-normal{
+			/*width: 15%;*/
+			height:100px;
+			background-color: #00AAEE;
+		}
+		main .tile-box.tile-box-row2{
+			height: 202px;
+			line-height: 202px;
+			grid-row-start: span 2;
+		}
+		main .tile-box.tile-box-col2{
+			grid-column-start: span 2;
+		}
+
+    </style>
+</head>
+<body>
+<header>
+	<div class="toolbar">
+		<div class="leftToolbar">
+			<h3>grid layout</h3>
+		</div>
+		<ul class="rightToolbar">
+			<li>
+				<a>
+					<cite>admin</cite>
+					<img src="yisheng.png"/>
+				</a>
+
+			</li>
+		</ul>
+	</div>
+</header>
+<main>
+	<h4>title</h4>
+	<div class="tiles">
+		<div class="tile-box tile-box-normal"><span>normal</span></div>
+		<div class="tile-box tile-box-normal"><span>normal</span></div>
+		<div class="tile-box tile-box-normal"><span>normal</span></div>
+		<div class="tile-box tile-box-col2"><span>tile-box-col2</span></div>
+		<div class="tile-box tile-box-normal"><span>normal</span></div>
+		<div class="tile-box tile-box-row2"><span>tile-box-row2</span></div>
+		<div class="tile-box tile-box-normal"><span>normal</span></div>
+		<div class="tile-box tile-box-normal"><span>normal</span></div>
+		<div class="tile-box tile-box-row2"><span>tile-box-row2</span></div>
+		<div class="tile-box tile-box-normal"><span>normal</span></div>
+		<div class="tile-box tile-box-normal"><span>normal</span></div>
+		<div class="tile-box tile-box-normal"><span>normal</span></div>
+	</div>
+</main>
+
+<script>
+		function randomColor(){
+			return "#"+(function(color){
+				return new Array(7-color.length).join("0")+color;
+			})((Math.random() * 0x1000000 | 0).toString(16));
+		}
+		let tileBox = document.querySelectorAll('.tile-box')
+		for(let i of tileBox){
+			 i.style.backgroundColor = randomColor()
+		}
+</script>
+</body>
+</html>
